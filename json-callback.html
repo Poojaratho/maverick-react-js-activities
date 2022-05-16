@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+
+<body>
+    <div id="main"></div> 
+    <button onclick="fetch()">Refresh</button>
+    <script type="text/javascript">
+        function fetch()
+        {
+            let xhr=new XMLHttpRequest();
+            xhr.open("get", "https://jsonplaceholder.typicode.com/users",true);
+            xhr.send();
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState==4){
+                    setTimeout(function()
+                    {
+                        let ele=document.getElementById('main');
+                        let data=xhr.responseText;
+                        let jsTypes=JSON.parse(data);
+                        let htmlcontent= ' ';
+                        for(let i=0; i<jsTypes.length;i++){
+                            htmlcontent=`<p>${htmlcontent} ID=${jsTypes[i].id},NAme=${jsTypes[i].name}</p>`
+                        }
+                        ele.innerHTML=htmlcontent;
+                    },2000);
+
+                }
+                
+            }
+            let ele=document.getElementById('main');
+            ele.innerHTML="please wait......"
+        }
+    </script>
+    
+</body>
+</html>

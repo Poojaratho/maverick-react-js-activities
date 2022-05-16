@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--These template strings are very much helpful in creating html elements when they have many dynamic data to be embedded.-->
+    <script type="text/javascript">
+        let id=123;
+        let qty=4;
+        let oldway="http://localhost:9980/product"+id+"/qty"+qty+"/";
+        let newway=`http://localhost:9980/product/${id}/qty/${qty}/`;
+        document.write("<p>old way: " +oldway+ "</p>");
+        document.write(`<p>new way : ${newway}</p>`);
+        let products= ["laptop","mobile","gyser","microwave"];
+        document.write("<ul>")
+            for(let i=0;i<products.length;i++)
+            {
+                document.write("<li>" +products[i]+ " is at position"+i+"</li>");
+            }
+            document.write("</ul>");
+            document.write(`<ul>`);
+                for(let i=0; i<products.length;i++)
+                {
+                    document.write(`<li>${products[i] }is at position ${i}</li>`)
+                }
+                document.write(`</ul>`);
+           
+    </script>
+</body>
+</html>
